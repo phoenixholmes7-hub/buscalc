@@ -90,10 +90,10 @@ object KeyMap {
         KeyDef(Key.D4, KeyKind.DIGIT, "4", Fn.D4, "n", Fn.SUM_N, "x̂,r", Fn.EST_X),
         KeyDef(Key.D5, KeyKind.DIGIT, "5", Fn.D5, "Σx", Fn.SUM_X, "ŷ,m", Fn.EST_Y),
         KeyDef(Key.D6, KeyKind.DIGIT, "6", Fn.D6, "Σy", Fn.SUM_Y, "x̄w,b", Fn.WMEAN),
-        KeyDef(Key.MUL, KeyKind.OPERATOR, "×", Fn.MUL, "COS", Fn.COS, "yˣ", Fn.POW),
+        KeyDef(Key.MUL, KeyKind.OPERATOR, "×", Fn.MUL, "COS", Fn.COS, "y^x", Fn.POW),
 
         KeyDef(Key.CLR, KeyKind.CLEAR, "C", Fn.CLR, null, null, "C ALL", Fn.CLR_ALL),
-        KeyDef(Key.D1, KeyKind.DIGIT, "1", Fn.D1, "Rad/Deg", Fn.RAD_DEG, "eˣ", Fn.EXP),
+        KeyDef(Key.D1, KeyKind.DIGIT, "1", Fn.D1, "Rad/Deg", Fn.RAD_DEG, "e^x", Fn.EXP),
         KeyDef(Key.D2, KeyKind.DIGIT, "2", Fn.D2, "nPr", Fn.NPR, "LN", Fn.LN),
         KeyDef(Key.D3, KeyKind.DIGIT, "3", Fn.D3, "nCr", Fn.NCR, "n!", Fn.FACT),
         KeyDef(Key.SUB, KeyKind.OPERATOR, "−", Fn.SUB, "TAN", Fn.TAN, "√x", Fn.SQRT),

@@ -29,12 +29,15 @@ android {
     }
     buildFeatures {
         compose = true
+        buildConfig = true
     }
     testOptions {
         unitTests {
             isIncludeAndroidResources = true
             all {
                 it.systemProperty("robolectric.pixelCopyRenderMode", "hardware")
+                // The screenshot tests write PNGs to build/screenshots rather than comparing against goldens.
+                it.systemProperty("roborazzi.test.record", "true")
                 it.maxHeapSize = "2g"
             }
         }
