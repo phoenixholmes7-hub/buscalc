@@ -5,14 +5,14 @@ import androidx.compose.ui.test.onNodeWithContentDescription
 import androidx.compose.ui.test.onNodeWithText
 import androidx.compose.ui.test.onRoot
 import androidx.compose.ui.test.performClick
+import com.buscalc.app.engine.CalcState
 import com.github.takahirom.roborazzi.captureRoboImage
 import org.junit.Assert.assertEquals
+import org.junit.Before
 import org.junit.Rule
-import org.junit.rules.ExternalResource
 import org.junit.Test
 import org.junit.runner.RunWith
 import org.robolectric.RobolectricTestRunner
-import org.robolectric.RuntimeEnvironment
 import org.robolectric.annotation.Config
 import org.robolectric.annotation.GraphicsMode
 
@@ -22,16 +22,14 @@ import org.robolectric.annotation.GraphicsMode
 @Config(qualifiers = "w411dp-h891dp-420dpi")
 class AppFlowTest {
 
-    /** Saved state from one test must not leak into the next, so wipe it before the activity starts. */
-    @get:Rule(order = 0)
-    val cleanState = object : ExternalResource() {
-        override fun before() {
-            RuntimeEnvironment.getApplication().filesDir.listFiles()?.forEach { it.delete() }
-        }
-    }
-
-    @get:Rule(order = 1)
+    @get:Rule
     val rule = createAndroidComposeRule<MainActivity>()
+
+    /** Robolectric keeps the app's files between tests, so each test starts from a blank calculator. */
+    @Before
+    fun blankCalculator() {
+        rule.runOnUiThread { activityViewModel(rule.activity).update { s = CalcState() } }
+    }
 
     private fun tap(vararg keys: String) {
         for (key in keys) rule.onNodeWithContentDescription(key).performClick()
